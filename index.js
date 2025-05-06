@@ -15,6 +15,12 @@ const signupSchema = Joi.object({
     password: Joi.string().min(6).required()
 });
 
+const signinSchema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(6).required()
+});
+
+
 app.use('/static', express.static(path.join(__dirname, 'pages')));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/css', express.static(path.join(__dirname, 'css')));
@@ -99,6 +105,10 @@ connectToDB().then(db => {
     app.post('/signIn', async (req, res) => {
         const { email, password } = req.body;
 
+        const { error } = signinSchema.validate({ email, password });
+        if (error) {
+            return res.send(`<p>${error.details[0].message}</p><a href="/signIn">Try again</a>`);
+        }
         const user = await usersCollection.findOne({ email });
         if (!user) return res.send(`<p>User not found</p><a href="/signIn">Try again</a>`);
 
