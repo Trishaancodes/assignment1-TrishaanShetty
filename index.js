@@ -160,12 +160,12 @@ connectToDB().then(db => {
     });
 
     function isLoggedIn(req, res, next) {
-        if (!req.session.user) return res.redirect('/login');
+        if (!req.session.user) return res.redirect('/signIn');
         next();
     }
     
     async function isAdmin(req, res, next) {
-        if (!req.session.user) return res.redirect('/login');
+        if (!req.session.user) return res.redirect('/signIn');
     
         const user = await usersCollection.findOne({ email: req.session.user.email });
         if (!user || user.user_type !== 'admin') {
