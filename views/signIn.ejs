@@ -1,30 +1,26 @@
 <%- include('templates/header', { 
-    title: 'Sign Up', 
+    title: 'Sign In', 
     cssFile: '' 
 }) %>
 
 <div class="d-flex flex-column min-vh-100">
-    
+
+    <!-- Main content -->
     <main class="flex-grow-1 d-flex justify-content-center align-items-center bg-light">
         <div class="bg-white shadow p-5 rounded" style="min-width: 300px;">
-            <h2 class="text-center mb-4">Sign Up</h2>
-            <form action="/signup" method="POST">
-                <div class="mb-3">
-                    <input type="text" name="firstName" placeholder="First Name" required class="form-control">
-                </div>
-                <div class="mb-3">
-                    <input type="text" name="lastName" placeholder="Last Name" required class="form-control">
-                </div>
+            <h2 class="text-center mb-4">Sign In</h2>
+            <form action="/signIn" method="POST">
                 <div class="mb-3">
                     <input type="email" name="email" placeholder="Email" required class="form-control">
                 </div>
                 <div class="mb-3">
                     <input type="password" name="password" placeholder="Password" required class="form-control">
                 </div>
-                <button type="submit" class="btn btn-success w-100">Sign Up</button>
+                <button type="submit" class="btn btn-primary w-100">Sign In</button>
             </form>
         </div>
     </main>
 
+    <!-- Footer -->
     <%- include('templates/footer', { scripts: [] }) %>
 </div>
