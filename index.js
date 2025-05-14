@@ -84,7 +84,7 @@ connectToDB().then(db => {
     });
     
     app.get('/signup', (req, res) => {
-        res.render('signUp', {
+        res.render('signup', {
             title: "Sign Up",
             scripts: ['authenticated.js']
         });
